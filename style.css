@@ -1,0 +1,28 @@
+:root {
+  --bg: #222;
+  --col: #fff;
+  --font: "Trebuchet MS";
+  --link: #ccc;
+  --shadow: 0 0 5px #000;
+}
+
+body {
+  background: var(--bg);
+  color: var(--col);
+  font-family: var(--font);
+  font-size: 20px;
+  margin: 4em;
+}
+
+a {
+  color: var(--link);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  text-shadow: var(--shadow);
+}
