@@ -1,9 +1,9 @@
 :root {
-  --bg: #222;
-  --col: #fff;
+  --bg: #FB6B90;
+  --col: #EFEBE0;
   --font: "Trebuchet MS";
-  --link: #ccc;
-  --shadow: 0 0 5px #000;
+  --link: #FAC0D0;
+  --shadow: 2px 2px 5px #FB4570;
 }
 
 body {
@@ -12,6 +12,7 @@ body {
   font-family: var(--font);
   font-size: 20px;
   margin: 4em;
+  text-shadow: var(--shadow);
 }
 
 a {
@@ -24,5 +25,4 @@ a:hover {
 
 h1 {
   text-align: center;
-  text-shadow: var(--shadow);
 }
