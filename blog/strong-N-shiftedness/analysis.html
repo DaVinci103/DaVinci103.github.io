@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Strong N-Shiftedness Analaysis - DV103 &#x2740;</title>
+<link ref="stylesheet" href="../../style.css">
+</head>
+
+<body>
+  <p>
+    Hi! :3 This is an analysis of my strong N-shiftedness ordinal notation. I'm planning to add the definition of this ordinal notation on my website later, but for now you only have this analysis. Btw, Σ<sub>n</sub> = ψ(Σ<sub>n+1</sub>).
+  </p>
+
+  <p>
+    Here's a list of abbreviations I'll use:
+  </p>
+
+  <ul>
+    <li>ψ(0) will be abbreviated as 1</li>
+    <li>1+...+1 w/ n copies of 1 will be abbreviated as n</li>
+    <li>ψ(1) will be abbreviated as ω</li>
+    <li>Σ<sub>0</sub> will be abbreviated as Ω</li>
+    <li>Σ<sub>1</sub> will be abbreviated as L</li>
+    <li>Σ<sub>2</sub> will be abbreviated as R</li>
+    <li>A+...+A w/ n copies of a term A will be abbreviated as An</li>
+  </ul>
+
+  <p>
+    Strong N-shiftedness will be compared against <a href="https://googology.miraheze.org/wiki/Bashicu_matrix_system">Baschicu Matrix System</a> (BMS), as BMS is a well-known and strong ordinal notation. I'll also add a column of theories I expect a term to be the proof theoretic ordinal (PTO) of.
+  </p>
+
+  <table>
+    <tr>
+      <th>Strong N-Shiftedness</th>
+      <th>BMS</th>
+      <th>PTO</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0 0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ω</td>
+      <td>0 1</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <td>ω+1</td>
+      <td>0 1 0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ω2</td>
+      <td>0 1 0 1</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ψ(2)</td>
+      <td>0 1 1</td>
+      <td>RFA</td>
+    </tr>
+    <tr>
+      <td>ψ(3)</td>
+      <td>0 1 1 1</td>
+      <td>EFA</td>
+    </tr>
+    <tr>
+      <td>ψ(ω)</td>
+      <td>0 1 2</td>
+      <td>IΣ<sub>1</sub></td>
+    </tr>
+    <tr>
+      <td>ψ(Ω)</td>
+      <td>0 11</td>
+      <td>PA</td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(L+ψ(Ω)))</td>
+      <td>0 11 2 31</td>
+      <td>ACA</td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(L+Ω))</td>
+      <td>0 11 21</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(L+ψ(L+1)))</td>
+      <td>0 11 21 3</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(L+ψ(L+Ω)))</td>
+      <td>0 11 21 31</td>
+      <td>ATR<sub>0</sub></td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(L+ψ(L+Ω)+ψ(Ω)))</td>
+      <td>0 11 21 31 2 31</td>
+      <td>ATR</td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(L2))</td>
+      <td>0 11 22</td>
+      <td>KPω</td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R+1)))</td>
+      <td>0 111</td>
+      <td>Π<sup>1</sup><sub>1</sub>-CA<sub>0</sub></td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R+Ω)))</td>
+      <td>0 111 211 31</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R+L)))</td>
+      <td>0 111 211 31 2</td>
+      <td>Π<sup>1</sup><sub>1</sub>-TR<sub>0</sub></td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R+L)+L))</td>
+      <td>0 111 211 31 42</td>
+      <td>KPi</td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R+L+1)))</td>
+      <td>0 111 211 311</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R+ψ(R+L))+L))</td>
+      <td>0 111 211 311 31 42</td>
+      <td>KPM</td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R+ψ(R+L)+1)))</td>
+      <td>0 111 211 311 311</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R+ψ(R+ψ(R+L)))+L))</td>
+      <td>0 111 211 311 41 52</td>
+      <td>Π<sub>3</sub>-ref</td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R2)))</td>
+      <td>0 111 22</td>
+      <td>Π<sup>1</sup><sub>0</sub>-ref</td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R2)+ψ(R+ψ(R2)+1)))</td>
+      <td>0 111 221</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R2+1)))</td>
+      <td>0 111 221 3</td>
+      <td>KPl<sub>0</sub> + stb</td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(R3)))</td>
+      <td>0 111 221 33</td>
+      <td>Π<sup>1</sup><sub>0</sub>-ref + stb</td>
+    </tr>
+    <tr>
+      <td>ψ(ψ(ψ(ψ(Σ<sub>3</sub>+1))))</td>
+      <td>0 111 222</td>
+      <td>KP<sub>0</sub> + Σ<sub>1</sub>-sep</td>
+    </tr>
+  </table>
+</body>
+</html>
