@@ -24,10 +24,7 @@ table {
   box-shadow: var(--shadow);
 }
 
-tbody {
-  background: var(--bg);
-}
-
 td, th {
+  background: var(--bg);
   padding: 4px;
 }
