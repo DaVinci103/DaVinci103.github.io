@@ -1,16 +1,8 @@
-:root {
-  --bg: #FB6B90;
-  --col: #EFEBE0;
-  --font: "Trebuchet MS";
-  --link: #FAC0D0;
-  --shadow: 2px 2px 5px #FB4570;
-}
-
 body {
   background: var(--bg);
   color: var(--col);
   font-family: var(--font);
-  font-size: 20px;
+  font-size: var(--size);
   margin: 4em;
   text-shadow: var(--shadow);
 }
@@ -25,4 +17,13 @@ a:hover {
 
 h1 {
   text-align: center;
+}
+
+table {
+  background: var(--col);
+  box-shadow: var(--shadow);
+}
+
+td, th {
+  padding: 4px;
 }
