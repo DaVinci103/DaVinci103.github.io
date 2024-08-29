@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Strong N-Shiftedness - DV103</title>
+<link rel="stylesheet" href="https://davinci103.github.io/style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Strong N-Shiftedness</h1>
+
+  <p>
+    Hi~! Strong N-shiftedness is an ordinal notation I made. It's based on <a href="https://googology.fandom.com/wiki/User_blog:TrialPurpleCube/Definition_of_LOCF">LOCF</a> and is intended to reach the proof theoretic ordinal of Z<sub>2</sub>. In this blog, I'll be explaining how it works :3
+  </p>
+
+  <p>
+    An ordinal notation is, as the name suggest, a notation for ordinals :P. Ordinal numbers are basically an extension of the naturals, 0, 1, 2, 3, etc, with infinities, like ω, ω+1, ε<sub>0</sub>, etc. Formally, an ordinal is the order-type of a well-ordered set, but you don't really have to worry about the formal definition. Just know that ordinals can be used to create large finite numbers through the use of things like the fast-growing hierarchy!
+  </p>
+
+  <p>
+    First, this ordinal notation needs an alphabet. An alphabet is simply a set of symbols that terms in this notation are made up of. My ordinal notation consists of different systems, one for each natural number \(N\), and is thus actually a family of ordinal notations intead of just one ordinal notation. Fix a natural number \(N\) (\(0\) is a natural number!), then, in the \(N\)<sup>th</sup> system, the alphabet consists of the following symbols:
+  </p>
+
+  <ul>
+    <li>\(0\)</li>
+    <li>\()\)</li>
+    <li>\(+\)</li>
+    <li>\(\psi(\) (yes, this is one symbol)</li>
+    <li>\(\Sigma_N\)</li>
+  </ul>
+
+  <p>
+    Not all terms that can be created by these symbols is an actual term. For example, \())0\Sigma_N+\psi(\) is just non-sense. Because of this, we also have grammar rules for what symbols can be put together to form a term. The set \(T\) will denote the set of all terms in this ordinal notation, while \(PT \subset T\) is a subset of that set that only has terms with a specific property. \(T\) and \(PT\) are defined as follows:
+  </p>
+
+  <ul>
+    <li>\(0\) and \(\Sigma_N\) is a term, where \(\Sigma_N\) is a term in \(PT\)</li>
+    <li>for two terms \(a\) and \(b\), where \(a \in PT\), \(a+b\) is a term</li>
+    <li>for a term \(a\), \(\psi(a)\) is a term in \(PT\)</li>
+  </ul>
+
+  <p>
+    We also need a way to order these terms in \(T\). The order in \(T\) is really simple: terms are ordered in lexicographical order, where \(0 &lt; ) &lt; + &lt; ( &lt; \Sigma_N\). I.e. for terms \(a\) and \(b\), if you want to know which one's greater, go from left to right through \(a\) and \(b\) until you find a symbol that is different in \(a\) than in \(b\), and depending on the order of symbols described above, you know which terms larger! For example, \(\psi(\psi(0)) &lt; \psi(\Sigma_N)\) as \(\psi &lt; \Sigma_N\), and that's the first symbol in which they differ. If \(a\) and \(b\) are equal up to a point where one ends, the longer one is simply the greater term: \(\psi(0)+\psi(0) &gt; \psi(0)\).
+  </p>
+
+  <p>
+    Let \(\oplus\) be a binary infix function on \(T\). \(\oplus\) is defined as follows:
+  </p>
+
+  <ul>
+    <li>\(0 \oplus t = t\)</li>
+    <li>for \(b \in PT\), \([a+b] \oplus t = a \oplus [b \oplus t]\) (I use \([]\) to denote the order of operations)</li>
+    <li>for \(t \in PT\) and \(t \le s\), \(s \oplus t = s+t\)</li>
+    <li>for \(t \in PT\) and \(s &lt; t\), \(s \oplus t = t\)</li>
+    <li>for \(a \le s\), \(s \oplus [a+b] = s+a+b\)</li>
+    <li>for \(s &lt; a\), \(s \oplus [a+b] = \)</li>
+  </ul>
+
+  <p>
+    While \(+\) is part of the syntax, \(\oplus\) can be used to actually sum two terms together.
+  </p>
+
+  <p>
+    An ordinal notation usually also has a system of fundamental sequences (or sometimes a standardness algorithm). An FS is a sequence leading up to an ordinal and is needed in the definition of the FGH. For example, the fundamental sequence for ω, the smallest infinite ordinal, is (usually) the sequence (0,1,2,...). The \(\eta\)<sup>th</sup> term of the fundamental sequence of \(\alpha\), with respect to some system of fundamental sequences, is usually denoted \(\alpha [\eta]\). The length of the fundamental sequence of \(\alpha\) is denoted \(\text{dom}(\alpha)\).
+  </p>
+
+  <p>
+    To define the fundamental sequences, I'll need to define a few other functions. One is a function \(\text{deg}\), mapping terms terms to what degree they have. \(\text{deg}(a) \ge 1\) means that \(a\) represents an admissible ordinal, and \(\text{deg}(a) \ge n+1\) for positive \(n\) means that \(a\) represents a \(\Sigma_n\)-stable ordinal. Another is \(+_{\bullet}\). \(a^{+_n}\) is supposed to represent the next \(\Sigma_n\)-stable ordinal after \(a\). And lastly, I'll also need a ternary \(\Psi\)-function where \(\Psi^a_b(c)\) is the collapse of \(c &lt; a\) below \(b\).
+  </p>
+
+\[\begin{array}{rrcl}
+\text{dom}: & T & \to & T \\
+& a & \mapsto & \text{dom}(a) \\
+[]: & T^2 & \to & T \\
+& (a,b) & \mapsto & a[b] \\
+\text{deg}: & T & \to & \mathbb{N} \\
+& a & \mapsto & \text{deg}(a) \\
++_{\bullet}: & T \times \mathbb{N} & \to & T \\
+& (a,n) & \mapsto & a^{+_n} \\
+\Psi: & T^3 & \to & T \\
+(a,b,c) & \mapsto & \Psi^a_b(c)
+\end{array}\]
+
+  <h1>WIP</h1>
+
+  <ul>
+    <li><a href="analysis">&sol;analysis</a></li>
+  </ul>
+
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
