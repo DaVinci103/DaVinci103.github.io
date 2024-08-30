@@ -114,15 +114,89 @@
       <li>Suppose \(\text{dom}(a) = 0\). Then, \(\text{dom}(s) = \underline{1}\).</li>
       <li>Suppose \(\text{dom}(a) = \underline{1}\). Then, \(\text{dom}(s) = \underline{\omega}\).</li>
       <li>Suppose \(\underline{\omega} \le \text{dom}(a) &lt; s\). Then, \(\text{dom}(s) = \text{dom}(a)\).</li>
-      <li>Suppose \(\text{dom}(a) &gt; s\). This is where it gets fun! &gt;:3 First, let \(0 &lt; n \le N\) be the smallest natural number so that \(\psi(a)^{+_n} &le; \text{dom}(a)\). Then:</li>
+      <li>Suppose \(\text{dom}(a) &gt;\). This is where it gets fun! &gt;:3 First, let \(0 \le n \le N\) be the smallest natural number so that \(s^{+_{n+1}} &gt; \text{dom}(a)\) where \(\psi(a)^{+_{N+1}} &gt; \text{dom}(a)\) is regarded as true. Then:</li>
       <ol>
-        <li>If such an \(n\) exists and [\(\text{dom}(a) = \psi(a)^{+_n}\) or \(\text{deg}(\text{dom}(a)) \le n\)], then \(\text{dom}(s) = s\).</li>
+        <li>If \(n \neq 0\) and [\(\text{dom}(a) = s^{+_n}\) or \(\text{deg}(\text{dom}(a)) \le n\)], then \(\text{dom}(s) = s\).</li>
         <li>Otherwise, \(\text{dom}(s) = \underline{\omega}\). Well, I'd suppose it'd be more fun with the FS map :P</li>
       </ol>
     </ol>
   </ol>
 
-  <h1>WIP</h1>
+  <p>
+    \([]\) is a mapping from pairs of terms \((s,t)\) where \(t &lt; \text{dom}(s)\) to terms \(s[t]\). Given terms \(s\) and \(t\), \(s[t]\) is defined as follows: 
+  </p>
+
+  <ol>
+    <li>Suppose \(s = \Sigma_N\). Then, \(s[t] = t\).</li>
+    <li>Suppose \(s = a+b\) for some \((a,b) \in PT \times (T \smallsetminus \{ 0 \})\). Then, \(s[t] = a+b[t]\)</li>
+    <li>Suppose \(s = \psi(a)\) for some \(a \in T\). Then:</li>
+    <ol>
+      <li>Suppose \(\text{dom}(a) = 0\). Then, \(s[t] = 0\).</li>
+      <li>Suppose \(\text{dom}(a) = \underline{1}\). Then:</li>
+      <ol>
+        <li>Suppose \(t = 0\), then \(s[t] = 0\).</li>
+        <li>Suppose \(t = \underline{1}\), then \(s[t] = \psi(a[0])\).</li>
+        <li>Suppose \(t = \underline{1+n}\) for some positive natural \(n\), then \(s[t] = s[\underline{1}]+s[\underline{n}]\).</li>
+      </ol>
+      <li>Suppose \(\omega \le \text{dom}(a) &lt; s\). Then, \(s[t] = \psi(a[t])\).</li>
+      <li>Suppose \(\text{dom}(a) &gt; s\). Let \(0 \le n \le N\) be the smallest natural number so that \(s^{+_{n+1}} &gt; \text{dom}(a)\) where \(s^{+_{N+1}} &gt; \text{dom}(a)\) is regarded as true. Then:</li>
+      <ol>
+        <li>If \(n \neq 0\) and [\(\text{dom}(a) = s^{+_n}\) or \(\text{deg}(\text{dom}(a)) \le n\)], then \(s[t] = t\).</li>
+        <li>Otherwise, \(s[t] = \lambda(t)\) where \(\lambda(0) = 0\) and \(\lambda(\underline{1+k}) = a[\Psi^a_{\text{dom}(a)}(\lambda(n))]\).</li>
+      </ol>
+    </ol>
+  </ol>
+
+  <p>
+    Wasn't that fun!
+  </p>
+
+  <p>
+    \(\text{deg}\) is a mapping from terms \(s\) to natural numbers \(\text{deg}(s)\). Given a term \(s\), \(\text{deg}(s)\) is defined as follows:
+  </p>
+
+  <ol>
+    <li>Suppose \(s = 0\). Then, \(\text{deg}(s) = 0\).</li>
+    <li>Suppose \(s = \Sigma_N\). Then, \(\text{deg}(s) = N+1\).</li>
+    <li>Suppose \(s = a+b\) for some \((a,b) \in PT \times (T \smallsetminus \{ 0 \})\). Then, \(\text{deg}(s) = 0\).</li>
+    <li>Suppose \(s = \psi(a)\) for some \(a \in T\). Then:</li>
+    <ol>
+      <li>Suppose \(\text{dom}(a) &lt; s\). Then, \(\text{deg}(s) = 0\).</li>
+      <li>Otherwise, let \(0 \le n \le N\) be the least natural number so that \(s^{+_{n+1}} &gt; \text{dom}(a)\). Then:</li>
+      <ol>
+        <li>If \(n \neq 0\) and [\(\text{dom}(a) = s^{+_n}\) or \(\text{deg}(\text{dom}(a)) \le n\)], then \(\text{deg}(s) = n\).</li>
+        <li>Otherwise, \(\text{deg}(s) = 0\).</li>
+      </ol>
+    </ol>
+  </ol>
+
+  <p>
+    Let \(+_{\bullet}\) be a mapping from terms \(\psi(a)\) for \(a \in T\) and natural numbers \(n \le N\) to terms \(s^{+_n}\). Given a term \(\psi(a)\) and a natural number \(n\), \(s^{+_n}\) is defined as follows:
+  </p>
+
+  <ol>
+    <li>If \(n = N\) then \(\psi(a)^{+_n} = \Sigma_N\).</li>
+    <li>Otherwise, \(\psi(a)^{+_n} = \psi(a \oplus \psi(a)^{+_{n+1}})\).</li>
+  </ol>
+
+  <p>
+    Let \(\Psi\) be a mapping from triplets of terms \((s,t,u)\) where \(t \in PT\) to terms \(\Psi^s_t(u)\). Given terms \(s\), \(t \in PT\) and \(u\), \(\Psi^s_t(u)\) is defined as follows:
+  </p>
+
+  <ol>
+    <li>Suppose \(t = \Sigma_N\). Then, \(\Psi^s_t(u) = \psi(u)\).</li>
+    <li>Suppose \(t = \psi(a)\) for some term \(a\), then:</li>
+    <ol>
+      <li>Suppose \(\text{dom}(a) &lt; s\). Then, \(\Psi^s_t(u) = \psi(a[\Psi^s_{\text{dom}(a)}(u)])\).</li>
+      <li>Suppose \(s \le \text{dom}(a)\). Then, \(\Psi^s_t(u) = \psi(a[u])\).</li>
+    </ol>
+  </ol>
+
+  <p>
+    That's basically my ordinal notation. I hope you like it! .(˙˘˙)&sol;
+  </p>
+
+  <p>meow :3</p>
 
   <ul>
     <li><a href="analysis">&sol;analysis</a></li>
