@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Strong N-Shiftedness - DV103</title>
+<title>DV103 | Strong N-Shiftedness</title>
 <link rel="stylesheet" href="https://davinci103.github.io/style.css">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -9,8 +9,10 @@
 <body>
   <h1>Strong N-Shiftedness</h1>
 
+  <a href="../..">&sol;..</a>
+
   <p>
-    Hi~! Strong N-shiftedness is an ordinal notation I made. It's based on <a href="https://googology.fandom.com/wiki/User_blog:TrialPurpleCube/Definition_of_LOCF">LOCF</a> and is intended to reach the proof theoretic ordinal of Z<sub>2</sub>. In this blog, I'll be explaining how it works :3
+    Hi~! Strong N-shiftedness is an ordinal notation I made. It's based on <a href="https://googology.fandom.com/wiki/User_blog:TrialPurpleCube/Definition_of_LOCF">LOCF</a> and is intended to reach the proof theoretic ordinal of Z<sub>2</sub>! In this blog, I'll be explaining how it works :3
   </p>
 
   <p>
@@ -35,7 +37,7 @@
 
   <ul>
     <li>\(0\) and \(\Sigma_N\) is a term, where \(\Sigma_N\) is a term in \(PT\)</li>
-    <li>for two terms \(a\) and \(b\), where \(a \in PT\), \(a+b\) is a term</li>
+    <li>for two terms \(a\) and \(b\), where \(a \in PT\) and \(b \neq 0\), \(a+b\) is a term</li>
     <li>for a term \(a\), \(\psi(a)\) is a term in \(PT\)</li>
   </ul>
 
@@ -44,24 +46,38 @@
   </p>
 
   <p>
-    Let \(\oplus\) be a binary infix function on \(T\). \(\oplus\) is defined as follows:
+    For easier writing, I've made a list of abbreviations! Abbreviations aren't really a necessary part of an ordinal notation, but they could be useful. They're basically a different way of notating terms in the ordinal notation. Here are the abbreviations I'll use:
   </p>
 
   <ul>
+    <li>Let \(\underline{1}\) abbreviate \(\psi(0)\)</li>
+    <li>For a natural number \(n &gt; 0\), let \(\underline{1+n}\) abbreviated \(\underline{1}+\underline{n}\)</li>
+    <li>Let \(\underline{\omega}\) abbreviate \(\psi(\underline{1})\)</li>
+  </ul>
+
+  <p>
+    I distinguish abbreviations from actual notation using an <u>underline</u>. There's also smth somewhat related to abbreviations, so I'll talk about it here :3. For a natural number \(n\), \(\Sigma_n\) can be used as an abbreviation for \(\psi(\Sigma_{n+1})\) in the \(N\)<sup>th</sup> system, where \(N &gt; n\). In the combined system, functions on terms are evaluated as if they're in the \(N\)<sup>th</sup> system where they all terms are valid terms in the \(N\)<sup>th</sup> system. If you don't quite get it, here's an example: in the combined system, \(\psi(\Sigma_2+\Sigma_2) &lt; \psi(\Sigma_3+\Sigma_1)\) will be evaluated in the \(N\)<sup>th</sup> system for some \(N \ge 3\), let's say \(N = 3\). Then, we can evaluate \(\Sigma_2\) and \(\Sigma_1\) using the abbreviations: \(\psi(\psi(\Sigma_3)+\psi(\Sigma_3)) &lt; \psi(\Sigma_3+\psi(\psi(\Sigma_3)))\). We now see that this expression is true in the \(3\)<sup>rd</sup> system, thus the expression \(\psi(\Sigma_2+\Sigma_2) &lt; \psi(\Sigma_3+\Sigma_1)\) is true in the combined system. Does that make sense? I hope it does :3c
+  </p>
+
+  <p>
+    Let \(\oplus\) be a binary infix function on \(T\). \(\oplus\) is defined as follows:
+  </p>
+
+  <ol>
     <li>\(0 \oplus t = t\)</li>
     <li>for \(b \in PT\), \([a+b] \oplus t = a \oplus [b \oplus t]\) (I use \([]\) to denote the order of operations)</li>
     <li>for \(t \in PT\) and \(t \le s\), \(s \oplus t = s+t\)</li>
     <li>for \(t \in PT\) and \(s &lt; t\), \(s \oplus t = t\)</li>
     <li>for \(a \le s\), \(s \oplus [a+b] = s+a+b\)</li>
-    <li>for \(s &lt; a\), \(s \oplus [a+b] = \)</li>
-  </ul>
+    <li>for \(s &lt; a\), \(s \oplus [a+b] = s\)</li>
+  </ol>
 
   <p>
     While \(+\) is part of the syntax, \(\oplus\) can be used to actually sum two terms together.
   </p>
 
   <p>
-    An ordinal notation usually also has a system of fundamental sequences (or sometimes a standardness algorithm). An FS is a sequence leading up to an ordinal and is needed in the definition of the FGH. For example, the fundamental sequence for ω, the smallest infinite ordinal, is (usually) the sequence (0,1,2,...). The \(\eta\)<sup>th</sup> term of the fundamental sequence of \(\alpha\), with respect to some system of fundamental sequences, is usually denoted \(\alpha [\eta]\). The length of the fundamental sequence of \(\alpha\) is denoted \(\text{dom}(\alpha)\).
+    An ordinal notation usually also has a system of fundamental sequences (or sometimes a standardness algorithm). An FS is a sequence leading up to an ordinal and is needed in the definition of the FGH. For example, the fundamental sequence for \(\omega\), the smallest infinite ordinal, is (usually) the sequence \((0,1,2,...)\). The \(\eta\)<sup>th</sup> term of the fundamental sequence of \(\alpha\), with respect to some system of fundamental sequences, is usually denoted \(\alpha [\eta]\). The length of the fundamental sequence of \(\alpha\) is denoted \(\text{dom}(\alpha)\).
   </p>
 
   <p>
@@ -78,8 +94,33 @@
 +_{\bullet}: & T \times \mathbb{N} & \to & T \\
 & (a,n) & \mapsto & a^{+_n} \\
 \Psi: & T^3 & \to & T \\
-(a,b,c) & \mapsto & \Psi^a_b(c)
+& (a,b,c) & \mapsto & \Psi^a_b(c)
 \end{array}\]
+
+  <p>
+    The definitions of the above functions kind-of all depend on each other, so it gets a bit complicated. I'll start with defining the top-most function and work my way down. Here's the definition of the domain map:
+  </p>
+
+  <p>
+    \(\text{dom}\) is a mapping from terms \(s\) to terms \(\text{dom}(s)\). Given a term \(s \in T\), \(\text{dom}(s)\) is defined as follows:
+  </p>
+
+  <ol>
+    <li>Suppose \(s = 0\). Then, \(\text{dom}(s) = 0\).</li>
+    <li>Suppose \(s = \Sigma_N\). Then, \(\text{dom}(s) = \Sigma_N\).</li>
+    <li>Suppose \(s = a+b\) for some \((a,b) \in PT \times (T \smallsetminus \{ 0 \})\). Then, \(\text{dom}(s) = \text{dom}(b)\).</li>
+    <li>Suppose \(s = \psi(a)\) for some \(a \in T\). Then:</li>
+    <ol>
+      <li>Suppose \(\text{dom}(a) = 0\). Then, \(\text{dom}(s) = \underline{1}\).</li>
+      <li>Suppose \(\text{dom}(a) = \underline{1}\). Then, \(\text{dom}(s) = \underline{\omega}\).</li>
+      <li>Suppose \(\underline{\omega} \le \text{dom}(a) &lt; s\). Then, \(\text{dom}(s) = \text{dom}(a)\).</li>
+      <li>Suppose \(\text{dom}(a) &gt; s\). This is where it gets fun! &gt;:3 First, let \(0 &lt; n \le N\) be the smallest natural number so that \(\psi(a)^{+_n} &le; \text{dom}(a)\). Then:</li>
+      <ol>
+        <li>If such an \(n\) exists and [\(\text{dom}(a) = \psi(a)^{+_n}\) or \(\text{deg}(\text{dom}(a)) \le n\)], then \(\text{dom}(s) = s\).</li>
+        <li>Otherwise, \(\text{dom}(s) = \underline{\omega}\). Well, I'd suppose it'd be more fun with the FS map :P</li>
+      </ol>
+    </ol>
+  </ol>
 
   <h1>WIP</h1>
 
