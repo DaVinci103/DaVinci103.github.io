@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DV103 | God-Angel Game</title>
+<link rel="stylesheet" href="https://davinci103.github.io/style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>God-Angel Game</h1>
+
+  <a href="../..">&leftarrow; DV103</a>
+
+  <p>
+    Hi again! The God-Angel game is a game I made a few months ago. This game is inspired by the mathematician Harvey Friedman. Here's a short explanation of how the game works:
+  </p>
+
+  <p>
+    The game is played between two people. One is reffered to as the god and the other is reffered to as the angel. The game starts with an agreed upon board state, which consits of a set of elements. Each round, the god gives a list instructions to the angel for creating new elements. At the end of each round, the angel may remove one element for the board. The angel wins when the board is empty. The god wins if the game goes on indefinitely.
+  </p>
+
+  <p>
+    So... that's the basic idea: the god wants to expand the board while the angel wants to shrink it, the gods strategy is mostly giving the right instructions for the board to be expanded and the angels strategy is to follow these instructions in a way that the board doesn't grow too much every time. Here are the exact rules of the game:
+  </p>
+
+  <p>
+    A board-state is a tuple (X,&lt;,f) consisting of a set X, a <a href="https://en.wikipedia.org/wiki/Total_order">linear order</a> &lt; and a binary <a href="https://en.wikipedia.org/wiki/Partial_function">partial function</a> f: X<sup>2</sup> &RightVector; X where:
+  </p>
+
+  <ol>
+    <li>For all x in X, f(x,y) may only be defined for y &lt; x and, when defined, f(x,y) &lt; x</li>
+    <li>For all x and y so that f(x,y) is defined, y &leq; f(x,y)</li>
+    <li>For all x, y and z so that f(x,y) and f(x,z) are defined, y &lt; z iff f(x,y) &lt; f(x,z)</li>
+    <li>For all w, x, y and z so that f(w,x), f(w,y), f(w,z) are defined, if f(x,y) = z then f(f(w,x),f(w,y)) = f(w,z)</li>
+  </ol>
+
+  <p>
+    At the start of the game, the god and the angel agree upon a starting board state. Then, each round, the god chooses a natural number k. The following is repeated k times:
+  </p>
+
+  <p>
+    The god chooses pairs of elements x and y in X. The angel may then extend (X,&lt;,f) to a new set (X',&lt;',f') so that:
+  </p>
+
+  <ol>
+    <li>X &sub; X', &lt; &sub; &lt;' and f &sub; f'</li>
+    <li>If y &lt; x then f'(x,y) is defined</li>
+    <li>(X',&lt;',f') is a valid board-state</li>
+  </ol>
+
+  <p>
+    After the above is repeated k times, the greatest element of X with respect to &lt; is removed. The game ends when X is empty, at which state the angel wins. If the game doesn't end, the god wins.
+  </p>
+
+  <p>
+    Here's an example of a game: the board-state at the start has X = {1,2,3}, &lt; is the usual order on numbers and f(3,1) = 2 is the only defined value for f. The god chooses k = 2 and, for the first iteration, chooses x = 3 and y = 2. Then, the angel must define f(3,2). She can't set f(3,2) = 1 as that'd violate rule 2 of a valid board-state. She can't set f(3,2) = 2 as that'd violate rule 3 of a valid board-state. She also can't set f(3,2) = 3 as that'd violate rule 1 of a valid board-state. Thus, she is forced to create a new element: 2.5, and she defined f(3,2) = 2.5. This is the basic strategy of the god: he chooses elements x and y so that the angel is forced to create new elements. In the second iteration, the god chooses x = 3 and y = 2.5. The angel then defines adds a new element 2.75 to X and defined f(3,2.5) = 2.75. Then, at the end of the round, the largest element of X is removed. This largest element is 3, thus X = {1,2,2.5,2.75}. Since f was only defined for x = 3, f is now defined for no values. This round, the god chooses k = 1. Then, he chooses x = 2.5 and y = 2. This time, the angel does not need to introduce a new element: she can simply set f(2.5,2) = 2. This is the basic strategy of the angel: she chooses to execute the intructions given to her in such a way that the board grows minimally. Now that the round is over, 2.75 is removed and X = {1,2,2.5}. This continous for a few more rounds with X = {1,2}, X = {1}, and, inevitably, X is empty. Since X is empty, the angel has won the game. You can verify that with this starting board-state, the angel can always win.
+  </p>
+
+  <p>
+    This brings me to my conjecture:
+  </p>
+
+  <p>
+    [Conjecture] In the God-Angel game, the angel always has a winning strategy.
+  </p>
+
+  <p>
+    If this conjecture is true, then <a href="https://googology.miraheze.org/wiki/Y_sequence">Y-sequence</a>, one of the strongest ordinal notations in googology, and many extension of it (including omega-Y) will be well-founded. I also expect this conjecture to imply the consistency of ZFC, though I have no proof for it yet. I'm planning to prove this conjecture using large cardinal axioms. I encourage you to try to partially proof this conjecture yourself, i.e. try to prove this conjecture for some specific board states in various theories, for example for the board state X = {1,2,3,4} with f(3,1) = 2 and f(4,1) = 3.
+  </p>
+
+  <p>
+    The value of a game-state G, |G| is defined as follows:
+  </p>
+
+  <ol>
+    <li>If the board is empty, then the value is 0</li>
+    <li>If the god is to choose a number k, the value is the supremum of values of the game-states resulting from the gods choice +1 (+1 is applied before "supremum" and after "value")</li>
+    <li>If the god is to choose x and y, the value is the supremum of the values of the game-states resulting from the gods choice</li>
+    <li>If the angel is to extend the board, the value is the infimum of values of the game-states resulting from the angels choice</li>
+  </ol>
+
+  <p>
+    Then, I coin the supremum of values of all board-states as the ethereal ordinal (not to be confused with <a href="https://en.wikipedia.org/wiki/Subtle_cardinal">ethereal cardinals</a>).
+  </p>
+
+  <p>
+    Thanks for reading! I appreciate it. Bye! .(&DiacriticalDot;&breve;&DiacriticalDot;)&sol;
+  </p>
+</body>
+</html>
