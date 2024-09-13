@@ -64,12 +64,10 @@
   </p>
 
   <ol>
-    <li>\(0 \oplus t = t\)</li>
-    <li>for \(b \in PT\), \([a+b] \oplus t = a \oplus [b \oplus t]\) (I use \([]\) to denote the order of operations)</li>
-    <li>for \(t \in PT\) and \(t \le s\), \(s \oplus t = s+t\)</li>
-    <li>for \(t \in PT\) and \(s &lt; t\), \(s \oplus t = t\)</li>
-    <li>for \(a \le s\), \(s \oplus [a+b] = s+a+b\)</li>
-    <li>for \(s &lt; a\), \(s \oplus [a+b] = s\)</li>
+    <li>\(s \oplus 0 = s\)</li>
+    <li>\(s \oplus [a + b] = [s \oplus a] \oplus b\) (I use \([]\) to indicate the order of operations as \(()\) is already part of the syntax)</li>
+    <li>\(s \oplus t = t\) for \(t \in PT\) and \(s &lt; t\)</li>
+    <li>\(s \oplus t = s + t\) for \(t \in PT\) and \(t \le s\)</li>
   </ol>
 
   <p>
@@ -114,7 +112,7 @@
       <li>Suppose \(\text{dom}(a) = 0\). Then, \(\text{dom}(s) = \underline{1}\).</li>
       <li>Suppose \(\text{dom}(a) = \underline{1}\). Then, \(\text{dom}(s) = \underline{\omega}\).</li>
       <li>Suppose \(\underline{\omega} \le \text{dom}(a) &lt; s\). Then, \(\text{dom}(s) = \text{dom}(a)\).</li>
-      <li>Suppose \(\text{dom}(a) &gt;\). This is where it gets fun! &gt;:3 First, let \(0 \le n \le N\) be the smallest natural number so that \(s^{+_{n+1}} &gt; \text{dom}(a)\) where \(\psi(a)^{+_{N+1}} &gt; \text{dom}(a)\) is regarded as true. Then:</li>
+      <li>Suppose \(\text{dom}(a) &gt; s\). This is where it gets fun! &gt;:3 First, let \(0 \le n \le N\) be the smallest natural number so that \(s^{+_{n+1}} &gt; \text{dom}(a)\) where \(\psi(a)^{+_{N+1}} &gt; \text{dom}(a)\) is regarded as true. Then:</li>
       <ol>
         <li>If \(n \neq 0\) and [\(\text{dom}(a) = s^{+_n}\) or \(\text{deg}(\text{dom}(a)) \le n\)], then \(\text{dom}(s) = s\).</li>
         <li>Otherwise, \(\text{dom}(s) = \underline{\omega}\). Well, I'd suppose it'd be more fun with the FS map :P</li>
